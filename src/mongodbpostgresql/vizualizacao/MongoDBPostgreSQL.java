@@ -10,11 +10,11 @@ import com.mongodb.DBObject;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import mongodbpostgresql.controle.AlunoCursoCampusIdJpaController;
-import mongodbpostgresql.controle.AlunoJpaController;
-import mongodbpostgresql.controle.CursoCampusJpaController;
+import mongodbpostgresql.modelo.dao.AlunoCursoCampusIdDAO;
+import mongodbpostgresql.modelo.dao.AlunoDAO;
+import mongodbpostgresql.modelo.dao.CursoCampusDAO;
 import mongodbpostgresql.controle.ObjetoMongoControle;
-import mongodbpostgresql.controle.UnidadeOrganizacionalJpaController;
+import mongodbpostgresql.modelo.dao.UnidadeOrganizacionalDAO;
 import mongodbpostgresql.modelo.Aluno;
 import mongodbpostgresql.modelo.AlunoCursoCampusId;
 import mongodbpostgresql.modelo.AlunoCursoCampusIdPK;
@@ -40,7 +40,7 @@ public class MongoDBPostgreSQL {
 
     private static boolean addUnidadeOrganizacional() {
         try {
-            UnidadeOrganizacionalJpaController jpaController = new UnidadeOrganizacionalJpaController();
+            UnidadeOrganizacionalDAO jpaController = new UnidadeOrganizacionalDAO();
             if (jpaController.getUnidadeOrganizacionalCount() == 0) {
                 ObjetoMongoControle mongoControle = new ObjetoMongoControle();
                 DBCursor cursor = mongoControle.listarObjetos(0);
@@ -63,8 +63,8 @@ public class MongoDBPostgreSQL {
     
     private static boolean addCursoCampus() {
         try {
-            CursoCampusJpaController jpaController = new CursoCampusJpaController();
-            UnidadeOrganizacionalJpaController controller = new UnidadeOrganizacionalJpaController();
+            CursoCampusDAO jpaController = new CursoCampusDAO();
+            UnidadeOrganizacionalDAO controller = new UnidadeOrganizacionalDAO();
             if (jpaController.getCursoCampusCount() == 0) {
                 ObjetoMongoControle mongoControle = new ObjetoMongoControle();
                 DBCursor cursor = mongoControle.listarObjetos(1);
@@ -89,7 +89,7 @@ public class MongoDBPostgreSQL {
     
     private static boolean addAluno() {
         try {
-            AlunoJpaController jpaController = new AlunoJpaController();
+            AlunoDAO jpaController = new AlunoDAO();
             if (jpaController.getAlunoCount() == 0) {
                 ObjetoMongoControle mongoControle = new ObjetoMongoControle();
                 DBCursor cursor = mongoControle.listarObjetos(2);
@@ -121,8 +121,8 @@ public class MongoDBPostgreSQL {
     
     private static boolean addAlunoCursoCampusId() {
         try {
-            AlunoCursoCampusIdJpaController jpaController = new AlunoCursoCampusIdJpaController();
-            CursoCampusJpaController cursoCampusController = new CursoCampusJpaController();
+            AlunoCursoCampusIdDAO jpaController = new AlunoCursoCampusIdDAO();
+            CursoCampusDAO cursoCampusController = new CursoCampusDAO();
             if (jpaController.getAlunoCursoCampusIdCount() == 0) {
                 ObjetoMongoControle mongoControle = new ObjetoMongoControle();
                 DBCursor cursor = mongoControle.listarObjetos(2);

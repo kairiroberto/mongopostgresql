@@ -8,7 +8,7 @@ package mongodbpostgresql.controle;
 import com.mongodb.DBCursor;
 import java.util.ArrayList;
 import java.util.List;
-import mongodbpostgresql.modelo.ObjetoMongoDBDAO;
+import mongodbpostgresql.modelo.dao.ObjetoMongoDBDAO;
 
 /**
  *
